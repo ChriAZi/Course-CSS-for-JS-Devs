@@ -1,14 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import styles from './ToggleButton.module.css';
+import styles from "./ToggleButton.module.css";
 
-const ToggleButton = ({
-  label,
-  color,
-  children,
-  isSelected,
-  ...delegated
-}) => {
+const ToggleButton = ({ label, color, children, isSelected, ...delegated }) => {
   return (
     <button
       {...delegated}
