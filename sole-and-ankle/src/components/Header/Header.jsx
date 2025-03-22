@@ -1,9 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import Logo from '../Logo';
-import SuperHeader from '../SuperHeader';
+import { COLORS, WEIGHTS } from "../../constants";
+import Logo from "../Logo";
+import SuperHeader from "../SuperHeader";
+import VisuallyHidden from "../VisuallyHidden/index.js";
+
+export const MainHeader = styled.div`
+  padding: 0 32px;
+  border-bottom: 1px solid ${COLORS.gray[300]};
+  display: flex;
+  align-items: center;
+  padding-block: 24px;
+`;
 
 const Header = () => {
   // Our site features two visual headers, but they should be
@@ -12,7 +21,9 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Logo />
+        <Side>
+          <Logo />
+        </Side>
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
@@ -21,17 +32,19 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        {/** This is a placeholder element to center nav bar links**/}
+        <Side />
       </MainHeader>
     </header>
   );
 };
 
-const MainHeader = styled.div`
-  padding: 0 32px;
-  border-bottom: 1px solid ${COLORS.gray[300]};
+const Nav = styled.nav`
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  gap: 48px;
 `;
-
-const Nav = styled.nav``;
 
 const NavLink = styled.a`
   font-size: 1.125rem;
@@ -43,6 +56,10 @@ const NavLink = styled.a`
   &:first-of-type {
     color: ${COLORS.secondary};
   }
+`;
+
+const Side = styled.div`
+  flex: 1;
 `;
 
 export default Header;
